@@ -1,10 +1,14 @@
 # importing required library
 import pygame
 import os
+import sys
 # activate the pygame library .
 pygame.init()
 X = 600
 Y = 600
+
+
+os.chdir(sys.argv[1])
 
 # create the display surface object
 # of specific dimension..e(X, Y).
@@ -54,7 +58,7 @@ pos = (0, 0)
 speed = 1
 player = [0, (X/2 - 20, Y/2 - 20)]
 playerrect = pygame.Rect(player[1][0], player[1][1], 20, 20)
-playertex = ["red.png"]
+playertex = ["player.png"]
 playerframes = loadplayerframes(playertex)
 
 #collision
