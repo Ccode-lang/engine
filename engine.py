@@ -1,10 +1,14 @@
 # importing required library
 import pygame
 import os
+import sys
 # activate the pygame library .
 pygame.init()
 X = 600
 Y = 600
+
+
+os.chdir(sys.argv[1])
 
 # create the display surface object
 # of specific dimension..e(X, Y).
@@ -21,7 +25,7 @@ def texturein(textures):
     for tex, tpos in textures:
         print(tex)
         print(tpos)
-        texlist += [[pygame.image.load(tex).convert(), tpos]]
+        texlist += [[int(tex), tpos]]
         counter += 1
     return texlist
 def loadplayerframes(textures):
@@ -40,7 +44,13 @@ for line in lines:
     texturenames += [[data[0], (int(data[1]), int(data[2]))]]
 print(texturenames)
 #texturenames = [["red.png", (0, 0)], ["red.png", (30, 0)]]
+atlasfile = open("textures.list", "r")
+lines = atlasfile.readlines()
+atlasfile.close()
 
+atlas = []
+for line in lines:
+    atlas += [pygame.image.load(line.split(":")[0])]
 textures = texturein(texturenames)
 
 
@@ -48,7 +58,7 @@ pos = (0, 0)
 speed = 1
 player = [0, (X/2 - 20, Y/2 - 20)]
 playerrect = pygame.Rect(player[1][0], player[1][1], 20, 20)
-playertex = ["red.png"]
+playertex = ["player.png"]
 playerframes = loadplayerframes(playertex)
 
 #collision
@@ -136,7 +146,7 @@ while running:
 
     for tex in textures:
         #print((tex[1][0] - pos[0], tex[1][1] - pos[1]))
-        scrn.blit(tex[0], (tex[1][0] - pos[0], tex[1][1] - pos[1]))
+        scrn.blit(atlas[tex[0]], (tex[1][0] - pos[0], tex[1][1] - pos[1]))
     
     scrn.blit(playerframes[player[0]], (player[1][0] - pos[0], player[1][1] - pos[1]))
     # paint screen one time
