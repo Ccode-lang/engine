@@ -41,7 +41,10 @@ map.close()
 texturenames = []
 for line in lines:
     data = line.split(":")
-    texturenames += [[data[0], (int(data[1]), int(data[2]))]]
+    print(data)
+    if not data[0].startswith("#"):
+        if not data[0] == "\n":
+            texturenames += [[data[0], (int(data[1]), int(data[2]))]]
 print(texturenames)
 #texturenames = [["red.png", (0, 0)], ["red.png", (30, 0)]]
 atlasfile = open("textures.list", "r")
@@ -50,7 +53,9 @@ atlasfile.close()
 
 atlas = []
 for line in lines:
-    atlas += [pygame.image.load(line.split(":")[0])]
+    if not line.startswith("#"):
+        if not line == "\n":
+            atlas += [pygame.image.load(line.split(":")[0])]
 textures = texturein(texturenames)
 
 
@@ -75,25 +80,33 @@ lines = map.readlines()
 map.close()
 for line in lines:
     data = line.split(":")
-    noup += [pygame.Rect(int(data[0]), int(data[1]), int(data[2]), int(data[3]))]
+    if not data[0].startswith("#"):
+        if not data[0] == "\n":
+            noup += [pygame.Rect(int(data[0]), int(data[1]), int(data[2]), int(data[3]))]
 map = open("nodown.col", "r")
 lines = map.readlines()
 map.close()
 for line in lines:
     data = line.split(":")
-    nodown += [pygame.Rect(int(data[0]), int(data[1]), int(data[2]), int(data[3]))]
+    if not data[0].startswith("#"):
+        if not data[0] == "\n":
+            nodown += [pygame.Rect(int(data[0]), int(data[1]), int(data[2]), int(data[3]))]
 map = open("noright.col", "r")
 lines = map.readlines()
 map.close()
 for line in lines:
     data = line.split(":")
-    noright += [pygame.Rect(int(data[0]), int(data[1]), int(data[2]), int(data[3]))]
+    if not data[0].startswith("#"):
+        if not data[0] == "\n":
+            noright += [pygame.Rect(int(data[0]), int(data[1]), int(data[2]), int(data[3]))]
 map = open("noleft.col", "r")
 lines = map.readlines()
 map.close()
 for line in lines:
     data = line.split(":")
-    noleft += [pygame.Rect(int(data[0]), int(data[1]), int(data[2]), int(data[3]))]
+    if not data[0].startswith("#"):
+        if not data[0] == "\n":
+            noleft += [pygame.Rect(int(data[0]), int(data[1]), int(data[2]), int(data[3]))]
 running = True
 while running:
 # iterate over the list of Event objects
