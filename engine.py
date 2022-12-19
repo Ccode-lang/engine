@@ -15,7 +15,7 @@ os.chdir(sys.argv[1])
 scrn = pygame.display.set_mode((X, Y))
 
 # set the pygame window name
-pygame.display.set_caption('image')
+pygame.display.set_caption('game')
 
 clock = pygame.time.Clock()
 

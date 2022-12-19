@@ -1,6 +1,6 @@
 # TODO
  * ~~it exists~~
- * make a test map
+ * ~~make a test map~~
  * player animation
  * more in game objects
 
